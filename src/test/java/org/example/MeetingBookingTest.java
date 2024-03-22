@@ -3,6 +3,7 @@ package org.example;
 import org.junit.Test;
 import java.util.Date;
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class MeetingBookingTest {
     @Test
@@ -47,5 +48,16 @@ public class MeetingBookingTest {
         String expected = "Meeting time is beyond working hours (8:00 am to 5:00 pm)";
         String actual = meetingBookingObj.bookMeeting(room, dateString, time);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testBookMeetingWithNullInputs() {
+        var meetingBookingObj = new MeetingBooking();
+        try {
+            meetingBookingObj.bookMeeting(null, null, null); // This should throw NullPointerException
+            fail("Expected NullPointerException was not thrown");
+        } catch (NullPointerException e) {
+            // The NullPointerException was thrown, which is expected
+        }
     }
 }

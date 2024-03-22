@@ -3,6 +3,7 @@ package org.example;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PrintingAgendaTest {
     @Test
@@ -21,5 +22,12 @@ public class PrintingAgendaTest {
         String expected = "Invalid room. Please specify one of the valid rooms: [Room B, Room A, Room D, Room C, Room F, Room E]";
         String actual = printingAgenda.printAgenda(room);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testPrintAgendaWithNullRoom() {
+        var printingAgenda = new PrintingAgenda();
+        String room = null;
+        assertThrows(IllegalArgumentException.class, () -> printingAgenda.printAgenda(room));
     }
 }

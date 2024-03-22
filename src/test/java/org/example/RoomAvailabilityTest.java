@@ -3,6 +3,7 @@ package org.example;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RoomAvailabilityTest {
     @Test
@@ -36,5 +37,12 @@ public class RoomAvailabilityTest {
         String expected = "Invalid date or time";
         String actual = roomAvailability.checkAvailability(room, date, time);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testBookMeetingWithNullInputs() {
+        var meetingBookingObj = new MeetingBooking();
+        // Use assertThrows to verify that NullPointerException is thrown
+        assertThrows(NullPointerException.class, () -> meetingBookingObj.bookMeeting(null, null, null));
     }
 }
