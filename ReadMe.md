@@ -67,10 +67,6 @@ To run the tests, follow these steps:
 
 ---
 
-## Contributors
-
-- [Julius Ssemakula]
-
 Feel free to contribute to this project by adding more tests or improving existing ones!
 
 ---
